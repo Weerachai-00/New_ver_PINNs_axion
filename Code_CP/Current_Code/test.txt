@@ -1,0 +1,8 @@
+def pressure(y,ma_array,N,n):
+	P=[]	
+	for i in range(N):
+		p_temp = 0
+		for j in range(n):
+			p_temp = p_temp - 0.5*(ma_array[j]*y[i,0:-1:2][j])**2 + 0.5*y[i,1::2][j]**2
+		P.append(p_temp)
+	return P

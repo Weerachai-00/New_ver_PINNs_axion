@@ -1,0 +1,196 @@
+
+\documentclass[12pt]{article}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{bm}
+
+\usepackage{color}
+\newcommand{\tkDM}[1]{\textcolor{red}{#1}}                     % Doddy
+
+
+\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+% See the ``Article customise'' template for come common customisations
+
+\title{Model Selection}
+\author{}
+\date{} % delete this line to display the current date
+
+%%% BEGIN DOCUMENT
+\begin{document}
+
+\maketitle
+
+\section{Masses, Decay Constants and Initial Conditions}
+
+This is to guide us how hyper-parameters are related to physical parameters in each models. 
+In general, the matrix is defined at the Lagrangian level as
+\beqa
+\mathcal{L} & = & {1\over 2} K_{ij} \partial_{\mu} \phi^i \partial^{\mu} \phi^j + {1\over 2} M_{ij} \phi^i\phi^j \\
+& = & {1\over 2} \partial_{\mu} {\bm \phi}^T {\bf K} \partial_{\mu} {\bm \phi} + {1\over 2} {\bm \phi}^T {\bf M} {\bm \phi} 
+\eeqa
+
+Then after the diagonalisation of the Kahler metric with the rotation matrix ${\bm \phi} =  {\bf U} {\bm \phi'}$, the Lagrangian is in the form
+\beqa
+\mathcal{L} &=& {1\over 2} \partial_{\mu} {\bm \phi'}^T {\bf U}^T {\bm K} {\bf U} \partial_{\mu} {\bm \phi'} + {1\over 2} {\bm \phi'}^T {\bf U}^T {\bf M}  {\bf U} {\bm \phi'} \\
+&=& {1\over 2} \partial_{\mu} {\bm \phi'}^T {\bf K}_D \partial_{\mu} {\bm \phi'} + {1\over 2} {\bm \phi'}^T {\bf U}^T {\bf M}  {\bf U} {\bm \phi'}
+\eeqa
+This is the step that we define decay constants, $f_{eff}^i \equiv f_i$, as
+\beq
+{\bf K}_D = \text{diag}(f_{1}^2, \ldots, f_{n}^2)
+\eeq
+that is the effective decay constants squared are the eigenvalues of the Kahler matrix.
+
+Then, rescale the fields with
+\beq
+{\bm \phi'} = {\bf K}_{reciprocal} {\bm \phi''},\;\; {\bf K}_{reciprocal} = \text{diag}({1\over \sqrt{K^D_{11}}}, \ldots,  {1\over \sqrt{K^D_{nn}}})
+\eeq
+such that
+\beq
+{\bf K}_{reciprocal}^T {\bf K}_D {\bf K}_{reciprocal} = \bf 1
+\eeq
+and
+\beq
+{\bm \phi} =  {\bf U} {\bf K}_{reciprocal} {\bm \phi''}
+\eeq
+
+At this stage the Lagrangian becomes
+\beq
+\mathcal{L} = {1\over 2} \partial_{\mu} {\bm \phi''}^T \partial_{\mu} {\bm \phi''} + {1\over 2} {\bm \phi''}^T {\bf K}_{reciprocal}^T {\bf U}^T {\bf M}  {\bf U} {\bf K}_{reciprocal}{\bm \phi''}
+\eeq
+
+Before shift symmetry is broken, the canonically normalised axions are randomly distributed everywhere in field space. So we give the initial conditions for ${\bm \phi''}$ and $\partial_{\mu} {\bm \phi''}$ at this step as
+\beqa
+{\bm \phi''}_{in} = \begin{pmatrix} \theta_{in}^1 f_1 \\ \vdots \\ \theta_{in}^n f_n \end{pmatrix},\;\; \dot{\bm \phi''}_{in} =\begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}
+\eeqa
+where $\theta^i_{in}$ is uniformly distributed from $-\pi$ to $\pi$
+\beq
+\theta^i_{in} \in [-\pi, \pi]
+\eeq
+
+Finally we apply the rotation matrix ${\bm \phi''} = {\bf V} \widetilde{\bm \phi}$ such that the final mass matrix is diagonal.
+\beq
+{\bf V}^T {\bf K}_{reciprocal}^T {\bf U}^T {\bf M}  {\bf U} {\bf K}_{reciprocal} {\bf V} = {\bf M}_{D}
+\eeq
+and the Lagrangian is nice and simple
+\beq
+\mathcal{L} = {1\over 2} \partial_{\mu} \widetilde{\bm \phi}^T \partial_{\mu} \widetilde{\bm \phi} + {1\over 2} \widetilde{\bm \phi}^T {\bf M}_{D} \widetilde{\bm \phi}
+\eeq
+
+\subsection{Summary}
+In the basis of $ \widetilde{\bm \phi}$ the mass is can be found by
+\beq
+\boxed{ {\bf M}_{D} = {\bf V}^T {\bf K}_{reciprocal}^T {\bf U}^T {\bf M}  {\bf U} {\bf K}_{reciprocal} {\bf V}}
+\eeq
+where ${\bm U}$ and ${\bm V}$ are diagonalisation matrices of ${\bm K}$ and ${\bf K}_{reciprocal}^T {\bf U}^T {\bf M}  {\bf U} {\bf K}_{reciprocal}$ respectively and 
+\beq
+\boxed{ {\bf K}_{reciprocal} = \text{diag}({1\over \sqrt{K^D_{11}}}, \ldots,  {1\over \sqrt{K^D_{nn}}})}
+\eeq
+The effective decay constant can be found from
+\beq
+\boxed{ {\bf K}_D = \text{diag}(f_{1}^2, \ldots, f_{n}^2)}
+\eeq
+The initial conditions in the basis of $\widetilde{\bm \phi}$ is written as
+\beq
+\boxed{ \widetilde{\bm \phi}_{in} = {\bf V}^T {\bm \phi''}_{in} = {\bf V}^T \begin{pmatrix} \theta_{in}^1 f_1 \\ \vdots \\ \theta_{in}^n f_n\end{pmatrix}}
+\eeq
+
+\section{Models}
+
+We need two sets of mean and variance for each model, i.e., $(a_0,\sigma_a)$ and $(b_0,\sigma_b)$. The exception is made in MT model where  the hyper parameters of K is $(a_0, a_1, a_2)$
+
+\subsection{Easther-McAllister model (EM)}
+
+In the code the tag name of the model is EM.
+
+The Kahler matrix is assumed to be
+\beq
+K = \bf 1
+\eeq
+
+The potential matrix is assumed to be
+\beqa
+M = B\times B^T,\;\; B = \begin{pmatrix} r_{11} & \ldots & r_{1n} \\ \vdots & \ddots & \vdots \\ r_{n1} & \ldots & r_{nn} \end{pmatrix}
+\eeqa
+where $r_{ij}$ are i.i.d values drawn from the normal distribution with mean 0 and variance $\sigma_b^2$. $B$ is a $(N +P)×N$ rectangular matrix. This will give the marchenko pastur density function for the eigenvalues of $M$.
+
+\subsection{Logflat model (LF)}
+
+\tkDM{Parameterisation used so far is log normal NOT log flat. I have changed to log flat. Also minus sign is now correct.}
+
+In the code the tag name of the model is LF.
+
+The Kahler matrix is assumed to be
+\beqa
+K = A\times A^T,\;\; A = \begin{pmatrix} e_{11} & \ldots & e_{1n} \\ \vdots & \ddots & \vdots \\ e_{n1} & \ldots & e_{nn} \end{pmatrix}
+\eeqa
+where $e_{ij} = e^{r_{ij}}$ and $r_{ij}$ are uniform random number ranging from
+\beq
+r_{ij} \in [\ln a_0 -\sigma_a, \ln a_0 + \sigma_a]
+\eeq
+\tkDM{
+\beq
+r_{ij} \in U[k_{\rm min},k_{\rm max}]
+\eeq
+}
+
+The potential matrix is assumed to be
+\beqa
+M = B\times B^T,\;\; B = \begin{pmatrix} e_{11} & \ldots & e_{1n} \\ \vdots & \ddots & \vdots \\ e_{n1} & \ldots & e_{nn} \end{pmatrix}
+\eeqa
+where $e_{ij} = e^{r_{ij}}$ and $r_{ij}$ are uniform random number ranging from
+\beq
+r_{ij} \in [\ln b_0 -\sigma_b, \ln b_0 + \sigma_b]
+\eeq
+\tkDM{
+\beq
+r_{ij} \in U[m_{\rm min},m_{\rm max}]
+\eeq
+}
+
+
+\subsection{M-theory inspired model (MT)}
+
+In the code the tag name of the model is MT.
+
+The Kahler matrix is assumed to be
+\beq
+K = A\times A^T,\;\;
+A = a_0  \begin{pmatrix} {1\over s_{11}} & \ldots & {1\over s_{1n}} \\ \vdots & \ddots & \vdots \\ {1\over s_{n1}} & \ldots & {1\over s_{nn}} \end{pmatrix}
+\eeq
+where $s_i$ are uniform random numbers ranging from
+\beq
+s_i \in [a_1,a_2]
+\eeq
+
+The potential matrix is assumed to be
+\beqa
+M = B\times B^T,\;\; B = \begin{pmatrix} e_{11} & \ldots & e_{1n} \\ \vdots & \ddots & \vdots \\ e_{n1} & \ldots & e_{nn} \end{pmatrix}
+\eeqa
+where $e_{ij} = e^{r_{ij}}$ and $r_{ij}$ are uniform random number ranging from
+\beq
+r_{ij} \in [\ln b_0 -\sigma_b, \ln b_0 + \sigma_b]
+\eeq
+
+\end{document}
+
+
+
+
+
+

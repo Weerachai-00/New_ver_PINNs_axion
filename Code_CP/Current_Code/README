@@ -1,0 +1,48 @@
+##########################################################
+How to use:
+##########################################################
+
+Initial Configuration:
+
+input includes: 
+number of axions,number of time steps, number of crossing (number of times allow axion field to begin oscillation)
+
+Model section: 1(Easther-McAllister),2 (Log-Flat),3 (M-Theory)
+Dimension: used to control dimension of matrices (B,B.T) which form M, parameter running from 0 to 1 set to 1 as default. 
+
+Hyperparamters: control for variance and mean of various models (details of which in the notes) 
+
+Initial condition : initial age of universe and conditions for phi
+
+
+##########################################################
+Main Code:
+##########################################################
+
+python naxion.py configuration_card.ini argument > output.txt
+
+##########################################################
+
+output file with values for H,W,Z
+
+**Plotting Arguments**
+Energy density vs scale factor = cosmo
+
+##########################################################
+Distribution Code:
+##########################################################
+
+python distribution.py argument > output.txt 
+
+##########################################################
+
+
+output file with values for f_eff,mass
+
+**Plotting Arguments**
+
+Mass Spectrum Plot = mspec
+F_eff Spectrum Ploy = fspec
+Mass and F_eff Spectrum Plot = mfspec
+
+##########################################################
