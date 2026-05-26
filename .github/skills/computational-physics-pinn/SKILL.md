@@ -1,6 +1,6 @@
 ---
 name: computational-physics-pinn
-description: "Use when working on Physics-Informed Neural Networks (PINNs) for cosmology, axion dynamics, Friedmann-Klein-Gordon ODEs, deep learning for physics, or computational astrophysics. Covers: diagnosing training failures (NaN, overflow, trivial solution collapse, gradient explosion), architecture design (WKB ansatz, VoP ansatz, Bessel embeddings, causal weighting), systematic debugging workflow, and physics-first improvement strategy."
+description: "Use when working on Physics-Informed Neural Networks (PINNs) for cosmology, axion dynamics, Friedmann-Klein-Gordon ODEs, deep learning for physics, or computational astrophysics. Covers: diagnosing training failures (NaN, overflow, trivial solution collapse, gradient explosion), architecture design (WKB expansion, WKB ansatz, VoP ansatz, Bessel embeddings, causal weighting), systematic debugging workflow, and physics-first improvement strategy."
 ---
 
 # Computational Physics PINN Research Skill
